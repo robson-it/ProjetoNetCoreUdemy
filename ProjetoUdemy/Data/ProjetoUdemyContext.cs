@@ -14,6 +14,8 @@ namespace ProjetoUdemy.Data
         {
         }
 
-        public DbSet<ProjetoUdemy.Models.Departamento> Departamento { get; set; } = default!;
+        public DbSet<Departamento> Departamento { get; set; } = default!;
+        public DbSet<Vendedor> Vendedor { get; set; }
+        public DbSet<RegistroVenda> RegistroVenda { get; set; }
     }
 }
