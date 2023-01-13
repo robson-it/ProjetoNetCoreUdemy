@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProjetoUdemy.Models;
+using ProjetoUdemy.Models.ViewModels;
 using System.Diagnostics;
 
 namespace ProjetoUdemy.Controllers
