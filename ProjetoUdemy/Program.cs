@@ -1,9 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ProjetoUdemy.Data;
+using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ProjetoUdemyContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ProjetoUdemyContext") ?? throw new InvalidOperationException("Connection string 'ProjetoUdemyContext' not found.")));
+    options.UseMySql(builder.Configuration.GetConnectionString("ProjetoUdemyContext"), 
+    //builder=> builder.MigrationsAssembly("ProjetoUdemy")));
+    Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.31-MySqlCharSetAttribute")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
