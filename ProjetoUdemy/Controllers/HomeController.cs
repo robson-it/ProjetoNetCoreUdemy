@@ -20,6 +20,7 @@ namespace ProjetoUdemy.Controllers
 
         public IActionResult Privacy()
         {
+            ViewData["Desenvolvedor"] = "Desenvolvedor: Robson Alves Rocha";
             return View();
         }
 
