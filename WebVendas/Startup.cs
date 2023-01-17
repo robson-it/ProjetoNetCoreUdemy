@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using WebVendas.Models;
 using WebVendas.Data;
+using WebVendas.Services;
 
 namespace WebVendas
 {
@@ -42,6 +43,7 @@ namespace WebVendas
                     builder.MigrationsAssembly("WebVendas")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<VendedorServico>();
 
 
             
