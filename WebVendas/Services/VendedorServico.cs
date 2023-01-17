@@ -19,5 +19,11 @@ namespace WebVendas.Services
         {
             return _context.Vendedor.ToList();
         }    
+
+        public void Insert(Vendedor objeto)
+        {
+            _context.Add(objeto);
+            _context.SaveChanges();
+        }
 }
 }
