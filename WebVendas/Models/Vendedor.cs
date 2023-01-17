@@ -11,10 +11,12 @@ namespace WebVendas.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public double BaseSalary { get; set; }
         public DateTime BirthDate { get; set; }
+        public double BaseSalary { get; set; }
         public Departamento Departamento { get; set; }
+        public int DepartamentoId { get; set; }
         public ICollection<RegistroVenda> Vendas { get; set; } = new List<RegistroVenda>();
+        
 
         public Vendedor() { }
 
@@ -26,6 +28,7 @@ namespace WebVendas.Models
             BaseSalary = baseSalary;
             BirthDate = birthDate;
             Departamento = departamento;
+            //DepartamentoId = departamentoId;
 
         }
 
