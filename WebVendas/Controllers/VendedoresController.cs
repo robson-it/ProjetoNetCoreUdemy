@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebVendas.Models;
 using WebVendas.Models.ViewModel;
 using WebVendas.Services;
+using WebVendas.Services.Exceptions;
 
 namespace WebVendas.Controllers
 {
@@ -48,7 +49,7 @@ namespace WebVendas.Controllers
                 return NotFound();
             }
             var obj = _vendedorServico.FindById(id.Value);
-            if(obj == null)
+            if (obj == null)
             {
                 return NotFound();
             }
@@ -58,14 +59,14 @@ namespace WebVendas.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete (int id)
+        public IActionResult Delete(int id)
         {
             _vendedorServico.Remove(id);
 
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Details (int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -78,6 +79,51 @@ namespace WebVendas.Controllers
             }
 
             return View(obj);
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _vendedorServico.FindById(id.Value);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            List<Departamento> departamentos = _departamentosServico.FindAll();
+            VendedorFormViewModel viewModel = new VendedorFormViewModel { Vendedor = obj, Departamentos = departamentos };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Vendedor vendedor)
+        {
+            if (id != vendedor.Id)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                _vendedorServico.Update(vendedor);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (NotFoundException e)
+            {
+                return NotFound();
+            }
+            catch (DbConcurrencyException e)
+            {
+                return BadRequest();
+            }
+
         }
     }
 }
