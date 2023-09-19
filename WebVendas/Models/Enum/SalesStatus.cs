@@ -7,9 +7,9 @@ namespace WebVendas.Models.Enum
 {
     public enum SalesStatus : int
     {
-        Pending = 0,
-        Billed = 1,
-        Canceled = 2
+        Pendente = 0,
+        Faturada = 1,
+        Cancelada = 2
 
     }
 }

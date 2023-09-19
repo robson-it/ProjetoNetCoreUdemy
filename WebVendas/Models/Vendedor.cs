@@ -28,7 +28,7 @@ namespace WebVendas.Models
 
         [Required(ErrorMessage = "{0} Requerido")]
         [Display(Name = "Base Salary")]
-        [DisplayFormat(DataFormatString ="{0:F2}")]
+        [DisplayFormat(DataFormatString ="{0:C2}")]
         [Range(100.0, 50000.0, ErrorMessage = "O {0} deve estar entre {1} e {2}")]
         public double BaseSalary { get; set; }
         public Departamento Departamento { get; set; }
