@@ -9,8 +9,8 @@ using WebVendas.Models;
 namespace WebVendas.Migrations
 {
     [DbContext(typeof(WebVendasContext))]
-    [Migration("20230116180021_teste")]
-    partial class teste
+    [Migration("20230918220031_WebVendas")]
+    partial class WebVendas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,11 +60,14 @@ namespace WebVendas.Migrations
 
                     b.Property<DateTime>("BirthDate");
 
-                    b.Property<int?>("DepartamentoId");
+                    b.Property<int>("DepartamentoId");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(60);
 
                     b.HasKey("Id");
 
@@ -84,7 +87,8 @@ namespace WebVendas.Migrations
                 {
                     b.HasOne("WebVendas.Models.Departamento", "Departamento")
                         .WithMany("Vendedores")
-                        .HasForeignKey("DepartamentoId");
+                        .HasForeignKey("DepartamentoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

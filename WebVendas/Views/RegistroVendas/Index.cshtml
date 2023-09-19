@@ -2,12 +2,25 @@
     ViewData["Title"] = "Registro de Vendas";
 }
 
-<h2>@ViewData["Title"]</h2>
-<div class="row">
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary  active" id="opcaoSimples">
+        <input type="radio" name="options"> Busca Simples
+    </label>
+    <label class="btn btn-primary" id="opcaoAgrupada">
+        <input type="radio" name="options"> Busca Agrupada
+    </label>
+</div>
+
+<hr />
+
+<div class="row" id="buscaSimples">
     <div class="col-md-6">
         <form class="form-horizontal" asp-action="BuscaSimples">
             <fieldset>
-                <legend>Simple search</legend>
+                <legend>Busca Simples</legend>
                 <div class="form-group">
                     <label for="minDate" class="col-lg-2 control-label">Min Date</label>
                     <div class="col-lg-10">
@@ -30,11 +43,11 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" id="buscaAgrupada">
     <div class="col-md-6">
         <form class="form-horizontal" asp-action="BuscaAgrupada">
             <fieldset>
-                <legend>Grouping search</legend>
+                <legend>Busca Agrupada</legend>
                 <div class="form-group">
                     <label for="minDate" class="col-lg-2 control-label">Min Date</label>
                     <div class="col-lg-10">
@@ -56,4 +69,21 @@
         </form>
     </div>
 </div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#buscaAgrupada').hide();
+        $('#buscaSimples').hide();
+        $('#opcaoSimples').click(function () {
+            $('#buscaSimples').show();
+            $('#buscaAgrupada').hide();
+        });
+
+        $('#opcaoAgrupada').click(function () {
+            $('#buscaSimples').hide();
+            $('#buscaAgrupada').show();
+        });
+    });
+</script>
 

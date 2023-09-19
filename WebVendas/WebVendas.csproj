@@ -2,7 +2,29 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Platforms>AnyCPU;x86;x64</Platforms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20230116171859_inicial.cs" />
+    <Compile Remove="Migrations\20230116171859_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20230116174402_novasEntidades.cs" />
+    <Compile Remove="Migrations\20230116174402_novasEntidades.Designer.cs" />
+    <Compile Remove="Migrations\20230116180021_teste.cs" />
+    <Compile Remove="Migrations\20230116180021_teste.Designer.cs" />
+    <Compile Remove="Migrations\20230117160312_DepartamentoForeignKey.cs" />
+    <Compile Remove="Migrations\20230117160312_DepartamentoForeignKey.Designer.cs" />
+    <Compile Remove="Migrations\20230918211902_webvendas.cs" />
+    <Compile Remove="Migrations\20230918211902_webvendas.Designer.cs" />
+    <Compile Remove="Migrations\20230918213954_inicialvendas.cs" />
+    <Compile Remove="Migrations\20230918213954_inicialvendas.Designer.cs" />
+    <Compile Remove="Migrations\20230918214832_WebVendas.cs" />
+    <Compile Remove="Migrations\20230918214832_WebVendas.Designer.cs" />
+    <Compile Remove="Migrations\20230918215638_WevBendas.cs" />
+    <Compile Remove="Migrations\20230918215638_WevBendas.Designer.cs" />
+    <Compile Remove="Migrations\20230918215704_VendasWeb.cs" />
+    <Compile Remove="Migrations\20230918215704_VendasWeb.Designer.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
